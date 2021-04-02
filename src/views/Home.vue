@@ -59,6 +59,13 @@
         <button>Close</button>
       </form>
     </dialog> -->
+    <div class="jumbotron">
+      <h1 class="display-4">Movies</h1>
+      <p class="lead">Welcome to your Movie App!</p>
+      <hr class="my-4" />
+      <p>Have you added movies before?</p>
+      <a class="btn btn-primary btn-lg" href="/movies" role="button">See Your Movies</a>
+    </div>
   </div>
 </template>
 

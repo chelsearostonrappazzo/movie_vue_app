@@ -1,5 +1,5 @@
 <template>
-  <div class="movies-new">
+  <div class="container movies-new">
     <form v-on:submit.prevent="createMovie()">
       <h1>Add a Movie</h1>
       <ul>
@@ -27,7 +27,11 @@
       </div>
       <div class="form-group">
         <label>Genres:</label>
-        <input type="text" class="form-control" v-model="Genres" />
+        <input type="text" class="form-control" v-model="genres" />
+      </div>
+      <div class="form-group">
+        <label>Image:</label>
+        <input type="text" class="form-control" v-model="image" />
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
@@ -46,6 +50,7 @@ export default {
       director: "",
       english: "",
       genres: "",
+      image: "",
       errors: [],
     };
   },
@@ -59,9 +64,10 @@ export default {
         director: this.director,
         english: this.english,
         genres: this.genres,
+        image: this.image,
       };
       axios
-        .post("/api/movies", params)
+        .post("/api/movies/", params)
         .then((response) => {
           console.log(this.movies);
           this.movies.push(response.data);
@@ -71,6 +77,8 @@ export default {
           this.director = "";
           this.english = "";
           this.genres = "";
+          this.image = "image";
+          this.$router.push("/movies");
         })
         .catch((error) => console.log(error.response));
     },

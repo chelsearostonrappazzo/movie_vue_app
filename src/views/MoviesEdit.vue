@@ -1,5 +1,5 @@
 <template>
-  <div class="movies-edit">
+  <div class="container movies-edit">
     <form v-on:submit.prevent="updateMovie(movie)">
       <h1>Edit Movie</h1>
       <ul>
@@ -28,6 +28,10 @@
       <div class="form-group">
         <label>Genres:</label>
         <input type="text" class="form-control" v-model="movie.genres" />
+      </div>
+      <div class="form-group">
+        <label>Image:</label>
+        <input type="text" class="form-control" v-model="movie.image" />
       </div>
       <input type="submit" class="btn btn-primary" value="Update" />
     </form>
@@ -59,6 +63,7 @@ export default {
         director: movie.director,
         english: movie.english,
         genres: movie.genres,
+        image: movie.image,
       };
       axios
         .patch("/api/movies/" + movie.id, params)
