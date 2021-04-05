@@ -9,7 +9,6 @@ import MoviesNew from "../views/MoviesNew.vue";
 import MoviesShow from "../views/MoviesShow.vue";
 import MoviesEdit from "../views/MoviesEdit.vue";
 
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -60,7 +59,7 @@ const routes = [
     path: "/movies/:id/edit",
     name: "movies-edit",
     component: MoviesEdit,
-  }
+  },
 ];
 
 const router = new VueRouter({

@@ -37,9 +37,16 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/movies">All Movies</a>
+          <li v-if="isLoggedIn()" class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
           </li>
+          <li v-else class="nav-item">
+            <a class="nav-link" href="/signup">Signup</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -54,7 +61,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/movies/new">Add a Movie</a>
-              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="/movies">All Movies</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
@@ -101,3 +108,12 @@ h1 {
   background-color: white !important;
 }
 </style>
+<script>
+export default {
+  methods: {
+    isLoggedIn: function () {
+      return localStorage.getItem("jwt");
+    },
+  },
+};
+</script>

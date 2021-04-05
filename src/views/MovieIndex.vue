@@ -7,8 +7,19 @@
       </h3>
       <p>{{ movie.plot }}</p>
     </div> -->
-
-    <div v-for="movie in movies" v-bind:key="movie.id" class="card mb-3" style="max-width: 540px">
+    Search by name:
+    <input v-model="titleFilter" list="titles" />
+    <datalist id="titles">
+      <option v-for="movie in movies" v-bind:key="movie.id">{{ movie.title }}</option>
+    </datalist>
+    <div><button v-on:click="orderBy(movie.title)">Sort Alphabetically</button></div>
+    <!-- <div v-for="movie in movies" v-bind:key="movie.id" > -->
+    <div
+      v-for="movie in orderBy(filterBy(movies, titleFilter, 'title'), 'title')"
+      v-bind:key="movie.id"
+      class="card mb-3"
+      style="max-width: 540px"
+    >
       <div class="row no-gutters">
         <div class="col-md-4">
           <router-link v-bind:to="`/movies/${movie.id}`">
@@ -32,11 +43,13 @@
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 
 export default {
   data: function () {
     return {
       movies: [],
+      titleFilter: "",
     };
   },
   created() {
@@ -50,5 +63,6 @@ export default {
       });
     },
   },
+  mixins: [Vue2Filters.mixin],
 };
 </script>
