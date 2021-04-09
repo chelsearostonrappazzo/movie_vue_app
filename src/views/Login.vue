@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="container login">
     <form v-on:submit.prevent="submit()">
       <h1>Login</h1>
       <ul>
@@ -19,7 +19,11 @@
     </form>
   </div>
 </template>
-
+<style>
+.form-group {
+  width: 300px;
+}
+</style>
 <script>
 import axios from "axios";
 
